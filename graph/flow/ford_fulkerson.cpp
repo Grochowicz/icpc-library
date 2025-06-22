@@ -1,5 +1,6 @@
 const ll inf = 1e15;
 // O(m F)
+// ford fulkerson com dfs
 struct ford_fulkerson {
     struct edge {
         int to,rev;

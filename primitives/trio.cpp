@@ -6,6 +6,6 @@ struct trio {
     bool operator<(trio o) {
         if(first!=o.first) return first<o.first;
         else if(second!=o.second) return second<o.second;
-        else if(third!=o.third) return third<o.third;
+        else return third<o.third;
     }
 };

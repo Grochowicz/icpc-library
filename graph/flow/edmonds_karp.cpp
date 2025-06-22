@@ -1,5 +1,6 @@
 const ll inf = 1e15;
 // O(n m^2)
+// ford fulkerson com bfs
 struct edmonds_karp {
     struct edge {
         int to,rev;
@@ -11,7 +12,7 @@ struct edmonds_karp {
     int n;
     vector<vector<edge>> adj;
     vector<pair<int,int>> p;
-    ford_fulkerson(int n) : n(n),adj(n),p(n) { }
+    edmonds_karp(int n) : n(n),adj(n),p(n) { }
 
     void add(int a, int b, int c) {
         adj[a].emplace_back(b,adj[b].size(),c,false);
@@ -22,12 +23,15 @@ struct edmonds_karp {
         for(auto&u:p) u = make_pair(-1,-1);
         p[s] = make_pair(s,0);
         queue<int> q;
-        for(auto&e:adj[s]) q.emplace(e,s);
+        q.emplace(s);
+
         while(not q.empty()) {
-            auto[e,u] = q.top(); q.pop();
-            for(auto ev:adj[e.to]) if(p[ev.to].first==-1) {
-                    q.emplace(ev,e.to);
-                    p[e.to] = make_pair(u, adj[e.to][e.rev].rev);
+            auto u = q.front(); q.pop();
+            for(int i=0;i<adj[u].size();i++) {
+                auto e = adj[u][i];
+                if(p[e.to].first==-1 and e.cap-e.flow>0) {
+                    q.emplace(e.to);
+                    p[e.to] = make_pair(u, i);
                     if(e.to==t) break;
                 }
             }
@@ -61,6 +65,7 @@ struct edmonds_karp {
             if(not ff) break;
             F += ff;
         }
+
         return F;
     }
 };

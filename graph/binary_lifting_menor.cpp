@@ -1,3 +1,4 @@
+// binary lifting na árvore formada por: p[i] = primeiro maior à direita de i no array
 int kp[LG][N];
 int res[LG][N];
 int v[N];

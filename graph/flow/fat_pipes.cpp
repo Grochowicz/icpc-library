@@ -1,5 +1,6 @@
 const ll inf = 1e15;
 // O(m^2 ln m ln F)
+// ford fulkerson com mst
 struct ford_fulkerson {
     struct edge {
         int to,rev;
