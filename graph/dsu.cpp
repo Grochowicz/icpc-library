@@ -1,6 +1,6 @@
 struct dsu {
     vector<int> pa,sz;
-    dsu(int n): sz(n,1),pa(n) {
+    dsu(int n): pa(n),sz(n,1) {
         iota(all(pa),0);
     }
 
