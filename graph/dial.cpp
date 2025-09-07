@@ -11,6 +11,7 @@ vector<int> dial(int s) {
     vector<basic_string<int>> q(D);
     dist[s] = 0;
     q[0].push_back(s);
+
     int prev = -1;
     while(true) {
         int x = -1;
@@ -23,6 +24,7 @@ vector<int> dial(int s) {
         }
         if(x==-1) break;
         prev = x;
+
         while(not q[x].empty()) {
             int u = q[x].back();
             q[x].pop_back();
