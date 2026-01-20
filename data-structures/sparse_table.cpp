@@ -1,7 +1,7 @@
 template<typename T>
 struct sparse_table {
     const T neutral = 2e9;
-    function<T(T,T)> comp = [&] (T a, T b) {
+    function<T(T,T)> comp = [&](T a, T b) {
         return min(a,b);
     };
     int n;
